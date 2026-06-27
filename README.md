@@ -101,17 +101,28 @@ python generate_report.py 2006 4 10 1 男
 
 ```
 命运双鉴/
-├── SKILL.md                    # Claude Code Skill 定义
+├── SKILL.md                    # Claude Code Skill 定义（精简版）
 ├── README.md                   # 本文件
 ├── .gitignore
-├── screenshot-bazi.png         # 八字标签截图
-├── screenshot-ziwei.png        # 紫微标签截图
-├── screenshot-dual.png         # 双鉴标签截图
+├── bazi.png                    # 八字标签截图
+├── ziwei.png                   # 紫微标签截图
+├── dual.png                    # 双鉴标签截图
 └── scripts/
-    ├── bazi_calculator.py      # 八字计算引擎（204行）
-    ├── ziwei_calculator.py     # 紫微斗数计算引擎（177行）
-    └── generate_report.py      # 统一生成器入口（920行）
+    ├── bazi_calculator.py      # 八字计算引擎（化石层）
+    ├── ziwei_calculator.py     # 紫微斗数计算引擎（化石层）
+    ├── data_bundle.py          # 数据打包器（化石层）
+    ├── html_frame.py           # HTML 框架生成器（化石层）
+    ├── generate_report.py      # 统一生成器入口
+    ├── assemble.py             # 组装器 + 内置验证
+    ├── validator.py            # 输出校验模块
+    ├── randomizer.py           # 风格随机化模块（防模板化）
+    └── pipeline.py             # 主流程编排器
 ```
+
+**模块职责：**
+- `validator.py` — 自动检查 analysis.json 结构完整性 + HTML 占位符全部替换
+- `randomizer.py` — 每次生成不同的写作风格配置（语调、结构、比喻域），从程序层面防模板化
+- `pipeline.py` — 端到端流水线，输入校验 → 数据生成 → 组装 → 验证 → 清理
 
 ---
 

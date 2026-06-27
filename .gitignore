@@ -1,4 +1,9 @@
 __pycache__/
 *.pyc
-# Ignore generated report HTMLs, but keep screenshots
+# Ignore generated report HTMLs and temp files
 命运双鉴_*.html
+reading.json
+frame.html
+analysis.json
+style_config.json
+gen_analysis_*.py
